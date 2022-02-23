@@ -7,6 +7,10 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    flash:
+      Book was successfully created: '新しく本が登録されました'
+      Book was successfully updated: '更新に成功しました'
+      Book was successfully destroyed: '削除しました'
   date:
     abbr_day_names:
       - 日
@@ -205,12 +209,13 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
-
-  New Book: 新規登録
-  Show: 詳細
-  Edit: 編集
-  Editing Book: 編集
-  Destroy: 削除
-  Back: 戻る
+  link:
+    New Book: 新規登録
+    Show: 詳細
+    Edit: 編集
+    Destroy: 削除
+    Back: 戻る
+  Editing Book: 本の編集
+  Are you sure: よろしいですか？
 
 

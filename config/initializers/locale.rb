@@ -1,5 +1,8 @@
 # アプリケーションでの利用を許可するロケールのリストを渡す
 I18n.available_locales = [:en, :ja]
 
-# ロケールを:en以外に変更する
+# ロケールを:jaにする
 I18n.default_locale = :ja
+
+# ロケールを:enにする
+# I18n.default_locale = :en
