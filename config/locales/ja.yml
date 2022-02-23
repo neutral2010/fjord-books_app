@@ -210,12 +210,12 @@ ja:
       short: "%m/%d %H:%M"
     pm: 午後
   link:
-    New Book: 新規登録
-    Show: 詳細
-    Edit: 編集
-    Destroy: 削除
-    Back: 戻る
-  Editing Book: 本の編集
+    new book: 新規登録
+    show: 詳細
+    edit: 編集
+    destroy: 削除
+    back: 戻る
+  editing Book: 本の編集
   Are you sure: よろしいですか？
 
 
