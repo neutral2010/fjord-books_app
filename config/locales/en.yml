@@ -155,6 +155,12 @@ en:
       create: Create %{model}
       submit: Save %{model}
       update: Update %{model}
+    link:
+      new book: New Book
+      show: Show
+      edit: Edit
+      destroy: Destroy
+      back: Back
   number:
     currency:
       format:
@@ -217,11 +223,5 @@ en:
       long: "%B %d, %Y %H:%M"
       short: "%d %b %H:%M"
     pm: pm
-  link:
-    new book: New Book
-    show: Show
-    edit: Edit
-    destroy: Destroy
-    back: Back
   editing book: Editing Book
-  Are you sure: よろしいですか？
+  Are you sure: Are you sure?
