@@ -3,6 +3,3 @@ I18n.available_locales = [:en, :ja]
 
 # ロケールを:jaにする
 I18n.default_locale = :ja
-
-# ロケールを:enにする
-# I18n.default_locale = :en
