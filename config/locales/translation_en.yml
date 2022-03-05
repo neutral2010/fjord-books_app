@@ -9,3 +9,22 @@ en:
         memo: Memo  #g
         picture: Picture  #g
         title: Title  #g
+
+  helpers:
+    link:
+      new book: New Book
+      show: Show
+      edit: Edit
+      destroy: Destroy
+      back: Back
+  books:
+    index:
+      sure: Are you sure?
+    edit:
+      editing_book: Edite Book
+    create:
+      success: Book was successfully created.
+    update:
+      success: Book was successfully updated.
+    destroy:
+      success: Book was successfully destroyed.

@@ -7,10 +7,6 @@ en:
         restrict_dependent_destroy:
           has_one: Cannot delete record because a dependent %{record} exists
           has_many: Cannot delete record because dependent %{record} exist
-    flash:
-      Book was successfully created: 'Book was successfully created'
-      Book was successfully updated: 'Book was successfully updated'
-      Book was successfully destroyed: 'Book was successfully destroyed'
   date:
     abbr_day_names:
       - Sun
@@ -155,12 +151,6 @@ en:
       create: Create %{model}
       submit: Save %{model}
       update: Update %{model}
-    link:
-      new book: New Book
-      show: Show
-      edit: Edit
-      destroy: Destroy
-      back: Back
   number:
     currency:
       format:
@@ -223,5 +213,3 @@ en:
       long: "%B %d, %Y %H:%M"
       short: "%d %b %H:%M"
     pm: pm
-  editing book: Editing Book
-  Are you sure: Are you sure?
