@@ -23,8 +23,8 @@ ja:
     edit:
       edit_book: 本の編集
     create:
-      success: 新しい本が登録されました
+      flash: 新しい本が登録されました
     update:
-      success: 更新が成功しました
+      flash: 更新が成功しました
     destroy:
-      success: 削除されました
+      flash: 削除されました
