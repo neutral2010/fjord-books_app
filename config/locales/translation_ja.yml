@@ -17,14 +17,12 @@ ja:
       edit: 編集
       destroy: 削除
       back: 戻る
+  flash:
+    created: '%{model}を作成しました'
+    updated: '%{model}を更新しました'
+    destroyed: '%{model}を削除しました'
   books:
     index:
       sure: よろしいですか？
     edit:
       edit_book: 本の編集
-    create:
-      flash: 新しい本が登録されました
-    update:
-      flash: 更新が成功しました
-    destroy:
-      flash: 削除されました

@@ -17,9 +17,12 @@ en:
       edit: Edit
       destroy: Destroy
       back: Back
+  flash:
+    created: '%{model} was successfully created.'
+    updated: '%{model} was successfully updated.'
+    destroyed: '%{model} was successfully destroyed.'
   books:
     index:
       sure: Are you sure?
     edit:
       editing_book: Edite Book
-    flash: Book was successfully %{str}
