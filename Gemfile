@@ -25,6 +25,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 #
 gem 'devise'
+gem 'devise-i18n'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -40,6 +41,7 @@ end
 group :development do
   gem 'faker'
   gem 'i18n_generators'
+  gem 'letter_opener_web', '~> 2.0'
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'rubocop-fjord', require: false
