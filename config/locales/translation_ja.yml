@@ -2,10 +2,22 @@ ja:
   activerecord:
     models:
       book: 本  #g
-
+      user: ユーザー
     attributes:
       book:
         author: 著者  #g
         memo: メモ  #g
         picture: 画像  #g
         title: 題名  #g
+      user:
+        postal_code: 郵便番号
+        address: 住所
+        self_description: 自己紹介
+  views:
+    application:
+      account_information: アカウント情報
+      sign_up: アカウント登録
+      login: ログイン
+      logout: ログアウト
+      logged_in: ログインしています
+    index: ユーザー一覧

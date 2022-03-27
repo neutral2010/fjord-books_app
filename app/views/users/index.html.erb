@@ -1,4 +1,4 @@
-<h1><%= User.model_name.human %>一覧</h1>
+<h1><%= t('views.index') %></h1>
 
 <table>
   <thead>
@@ -14,10 +14,7 @@
     <tr>
       <td><%= user.id %></td>
       <td><%= user.self_description %></td>
-      <!--      <td><%#= user.postal_code %></td>-->
       <td><%= link_to t('views.common.show'), user %></td>
-      <!--      <td><%#= link_to t('views.common.edit'), edit_user_path(user) %></td>-->
-      <!--      <td><%#= link_to t('views.common.destroy'), user, method: :delete, data: { confirm: t('views.common.delete_confirm') } %></td>-->
     </tr>
   <% end %>
   </tbody>
