@@ -20,4 +20,6 @@ ja:
       login: ログイン
       logout: ログアウト
       logged_in: ログインしています
-    index: ユーザー一覧
+  users:
+    index:
+      title: ユーザー一覧
