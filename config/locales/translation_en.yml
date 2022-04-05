@@ -9,3 +9,18 @@ en:
         memo: Memo  #g
         picture: Picture  #g
         title: Title  #g
+      user:
+        postal_code: Postal code
+        address: Address
+        self_description: Self introduction
+  views:
+    application:
+      account_information: Account Information
+      sign_up: Sign up
+      login: Log in
+      logout: Log out
+      logged_in: You are logged in
+  users:
+    index:
+      title: Users
+

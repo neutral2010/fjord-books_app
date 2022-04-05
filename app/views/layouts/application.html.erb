@@ -1,15 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>BooksApp</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>BooksApp</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+<% if notice %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+<p>
+  <% if user_signed_in? %>
+    <%= t('views.application.logged_in') %> |
+    <%= link_to t('views.common.title_edit', name: t('views.application.account_information')), edit_user_registration_path, class: 'navbar-link' %>
+    |
+    <%= link_to t('views.application.logout'), destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= link_to t('views.application.sign_up'), new_user_registration_path, class: 'navbar-link' %> |
+    <%= link_to t('views.application.login'), new_user_session_path, class: 'navbar-link' %>
+  <% end %>
+</p>
+<%= yield %>
+</body>
 </html>
