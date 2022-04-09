@@ -6,6 +6,10 @@
 </p>
 
 <p>
+  <% if @user.icon.attached? %>
+    <%= image_tag @user.icon.variant(resize: "50x50") %>
+  <% end %>
+  <br>
   <strong><%= User.human_attribute_name(:name) %>:</strong>
   <%= @user.name %>
 </p>
