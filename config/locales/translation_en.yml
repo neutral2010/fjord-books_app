@@ -15,3 +15,6 @@ en:
         address: Address
         self_introduction: Self introduction
         avatar: "User image"
+  button:
+    follow: follow
+    unfollow: unfollow
