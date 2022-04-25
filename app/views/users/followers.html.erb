@@ -1,0 +1,28 @@
+<h1><%= FollowRelation.human_attribute_name(:follower) %></h1>
+<table>
+  <thead>
+  <tr>
+    <th><%= User.human_attribute_name(:name) %></th>
+    <th><%= User.human_attribute_name(:self_introduction) %></th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @followers.each do |user| %>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.self_introduction %></td>
+      <td>
+        <% if user.avatar.attached? %>
+          <%= image_tag user.avatar.variant(resize_to_fill: [30, 30])%>
+        <% end %>
+      </td>
+<!--      <td><%#= link_to t('views.common.show'), book %></td>-->
+      <td><%= link_to t('views.common.show'), '#' %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%#= paginate @followers %>

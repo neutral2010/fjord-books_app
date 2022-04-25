@@ -16,6 +16,9 @@ ja:
         address: 住所
         self_introduction: 自己紹介文
         avatar: ユーザ画像
+      follow_relation:
+        follower: フォロー
+        following: フォロワー
   button:
     follow: フォローする
     unfollow: フォローを解除する

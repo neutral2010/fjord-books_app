@@ -6,10 +6,10 @@
 </p>
 
 <p>
-  <%= link_to "#{@user.followers.count} #{User.human_attribute_name("following")}", '#' %>
-  <%= link_to "#{@user.following.count} #{User.human_attribute_name("followers")}", '#' %>
+  <%= link_to "#{@user.following.count} #{User.human_attribute_name("followers")}", followers_user_path %>
+  <%= link_to "#{@user.followers.count} #{User.human_attribute_name("following")}", following_user_path %>
 </p>
-
+<%# binding.irb %>
 <p>
   <strong><%= User.human_attribute_name(:name) %>:</strong>
   <%= @user.name %>
