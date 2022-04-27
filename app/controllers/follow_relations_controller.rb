@@ -1,14 +1,21 @@
 # frozen_string_literal: true
 
 class FollowRelationsController < ApplicationController
+  before_action :set_followed_user, only: %I[create destroy]
+
   def create
-    user = User.find(params[:followed_id])
-    current_user.follow(user)
-    redirect_to user_path(user)
+    current_user.follow(@followed_user)
+    redirect_to user_path(@followed_user)
   end
 
   def destroy
-    FollowRelation.find_by(follower_id: current_user.id, followed_id: params[:id])&.destroy
-    redirect_to user_path
+    current_user.unfollow(@followed_user)
+    redirect_to user_path(@followed_user)
+  end
+
+  private
+
+  def set_followed_user
+    @followed_user = User.find(params[:followed_id])
   end
 end

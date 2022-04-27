@@ -18,11 +18,10 @@
           <%= image_tag user.avatar.variant(resize_to_fill: [30, 30])%>
         <% end %>
       </td>
-<!--      <td><%#= link_to t('views.common.show'), book %></td>-->
-      <td><%= link_to t('views.common.show'), '#' %></td>
+      <td><%= link_to t('views.common.show'), user_path(user) %></td>
     </tr>
   <% end %>
   </tbody>
 </table>
+<%= link_to t('views.common.back'), user_path %>
 
-<%#= paginate @followers %>
