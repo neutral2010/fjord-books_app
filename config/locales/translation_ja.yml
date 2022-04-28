@@ -17,8 +17,9 @@ ja:
         self_introduction: 自己紹介文
         avatar: ユーザ画像
       follow_relation:
-        follower: フォロー
-        following: フォロワー
+        follower: わたしがfollowした人たち
+        following: followしてくれた人たち
   button:
     follow: フォローする
     unfollow: フォローを解除する
+    back: 前に戻る
