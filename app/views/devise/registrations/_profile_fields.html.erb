@@ -5,9 +5,9 @@
 
 <div class="field">
   <%= f.label :icon %>
-  <% if @user.icon.attached? && @user.icon.variable? %>
-  <%= image_tag @user.icon.variant(resize_to_fill: [50, 50]) %>
-  <% end %>
+    <% if @user.icon.attached? && @user.icon.variable? %>
+      <%= image_tag @user.icon.variant(resize_to_fill: [50, 50]) %>
+    <% end %>
   <%= f.file_field :icon %>
 </div>
 

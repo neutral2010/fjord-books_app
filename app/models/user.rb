@@ -4,5 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one_attached :icon
-  validates :icon, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'] }
+  validate :icon_type
+
+  private
+
+  def icon_type
+    errors.add(:icon, :image_upload) unless icon.blob.content_type.in?(%('image/jpeg image/jpg image/png'))
+  end
 end
