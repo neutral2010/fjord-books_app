@@ -17,7 +17,7 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_follow_relations, source: :follower
 
   def follow(other_user)
-    following << other_user
+    active_follow_relations.create(followed_id: other_user.id)
   end
 
   def unfollow(other_user)
