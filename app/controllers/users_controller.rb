@@ -9,12 +9,10 @@ class UsersController < ApplicationController
 
   def show; end
 
-  # 私をフォローしている人の集団
   def followers
     @followers = @user.followers
   end
 
-  # 私がフォローしている人の集団
   def followings
     @followings = @user.following
   end

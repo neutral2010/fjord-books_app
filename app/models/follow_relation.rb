@@ -8,5 +8,4 @@ class FollowRelation < ApplicationRecord
   validates :followed_id, presence: true
 
   validates :follower_id, uniqueness: { scope: :followed_id }
-  # message: 'フォローフォロワー関係が既にあります' }
 end
