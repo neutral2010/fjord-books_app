@@ -12,6 +12,13 @@ ja:
         title: 題名  #g
       user:
         name: 氏名
+        icon: アイコン
         postal_code: 郵便番号
         address: 住所
         self_introduction: 自己紹介文
+    errors:
+      models:
+        user:
+          attributes:
+            icon:
+              image_upload: "はjpg形式、jpg形式、png形式でアップロードしてください"

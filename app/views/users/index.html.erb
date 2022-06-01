@@ -4,10 +4,10 @@
   <thead>
     <tr>
       <th><%= User.human_attribute_name(:email) %></th>
+      <th><%= User.human_attribute_name(:icon) %></th>
       <th><%= User.human_attribute_name(:name) %></th>
       <th><%= User.human_attribute_name(:postal_code) %></th>
       <th><%= User.human_attribute_name(:address) %></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -15,6 +15,11 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.email %></td>
+        <td>
+          <% if user.icon.attached? %>
+            <%= image_tag user.icon.variant(resize_to_fill: [30, 30]) %>
+          <% end %>
+        </td>
         <td><%= user.name %></td>
         <td><%= user.postal_code %></td>
         <td><%= user.address %></td>
