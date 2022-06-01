@@ -26,6 +26,6 @@ ja:
   controllers:
     follow_relations:
       notice:
-        You could follow: フォロー成功
+        follow_success: フォロー成功
       alert:
-        You already followed: 既にフォローしているユーザーでした
+        already_followed: 既にフォローしているユーザーでした

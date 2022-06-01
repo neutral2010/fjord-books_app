@@ -19,3 +19,9 @@ en:
     follow: follow
     unfollow: unfollow
     back: back to Previous
+  controllers:
+    follow_relations:
+      notice:
+        follow_success: You could follow
+      alert:
+        already_followed: You already followed
