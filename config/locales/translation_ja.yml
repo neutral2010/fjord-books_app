@@ -16,3 +16,16 @@ ja:
         address: 住所
         self_introduction: 自己紹介文
         avatar: ユーザ画像
+      follow_relation:
+        following: フォロー
+        followers: フォロワー
+  button:
+    follow: フォローする
+    unfollow: フォローを解除する
+    back: 前に戻る
+  controllers:
+    follow_relations:
+      notice:
+        follow_success: フォロー成功
+      alert:
+        already_followed: 既にフォローしているユーザーでした

@@ -6,6 +6,11 @@
 </p>
 
 <p>
+  <%= link_to "#{FollowRelation.human_attribute_name(:following)}   #{@user.following.count}", followings_user_path %>｜｜
+  <%= link_to "#{FollowRelation.human_attribute_name(:followers)}   #{@user.followers.count}", followers_user_path %>
+</p>
+
+<p>
   <strong><%= User.human_attribute_name(:name) %>:</strong>
   <%= @user.name %>
 </p>
@@ -29,11 +34,26 @@
   <strong><%= User.human_attribute_name(:avatar) %>:</strong>
   <% if @user.avatar.attached? %>
     <br>
-    <%= image_tag @user.avatar.variant(resize_to_fill: [150, 150])%>
+    <%= image_tag @user.avatar.variant(resize_to_fill: [150, 150]) %>
   <% end %>
 </p>
+
+<% unless @user == current_user %>
+  <% if current_user.following?(@user) %>
+    <%= form_with(model: current_user.active_follow_relations.find_by(followed_id: @user.id), local: true, method: :delete) do |f| %>
+      <%= hidden_field_tag :followed_id, @user.id %>
+      <%= f.submit t('button.unfollow') %>
+    <% end %>
+  <% else %>
+    <%= form_with(model: current_user.active_follow_relations.build, local: true) do |f| %>
+      <%= hidden_field_tag :followed_id, @user.id %>
+      <%= f.submit t('button.follow') %>
+    <% end %>
+  <% end %>
+<% end %>
 
 <% if current_user == @user %>
   <%= link_to t('views.common.edit'), edit_user_registration_path %> |
 <% end %>
-<%= link_to t('views.common.back'), users_path %>
+
+<a href="#" onclick="history.back(-1);return false;"><%= t('button.back') %></a>
