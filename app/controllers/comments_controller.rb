@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[show edit update destroy]
 
@@ -7,8 +9,7 @@ class CommentsController < ApplicationController
   end
 
   # GET /comments/1 or /comments/1.json
-  def show
-  end
+  def show; end
 
   # GET /comments/new
   def new
@@ -17,16 +18,16 @@ class CommentsController < ApplicationController
   end
 
   # GET /comments/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /comments or /comments.json
   def create
-    @comment = Comment.new(comment_params)
-    @comment.report_id = params[:report_id]
+    @comment = @commentable.comments.build(comment_params)
+    # @comment = Comment.new(comment_params)
+    # @comment.report_id = params[:report_id]
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to report_path(@comment.report_id), notice: "Comment was successfully created." }
+        format.html { redirect_to report_path(@comment.commentable_id), notice: 'Comment was successfully created.' }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -37,7 +38,7 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to report_path(@comment.report_id), notice: "Comment was successfully updated." }
+        format.html { redirect_to report_path(@comment.commentable_id), notice: 'Comment was successfully updated.' }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -48,7 +49,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to report_path(@comment.report_id), notice: "Comment was successfully destroyed." }
+      format.html { redirect_to report_path(@comment.commentable_id), notice: 'Comment was successfully destroyed.' }
     end
   end
 

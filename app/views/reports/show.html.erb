@@ -10,5 +10,12 @@
   <%= @report.description %>
 </p>
 
+<%#= form_with model: [@commentable, Comment.new] do |f| %>
+  <%#= f.text_area :content %>
+<!--  <div class="actions">-->
+    <%#= f.submit "コメントをする", class: 'btn btn-warning px-5' %>
+<!--  </div>-->
+<%# end %>
+
 <%= link_to 'Edit', edit_report_path(@report) %> |
 <%= link_to 'Back', reports_path %>
