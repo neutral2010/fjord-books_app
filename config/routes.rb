@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :reports
   resources :comments, only: %i[show edit destroy]
   resources :reports do
     resources :comments, only: %i[new create update]
