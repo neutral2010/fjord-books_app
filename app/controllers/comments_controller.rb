@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
 
   # GET /comments or /comments.json
   def index
-    @comments = Comment.all
+    @comments = @commentable.comments
   end
 
   # GET /comments/1 or /comments/1.json
@@ -13,8 +13,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @report = Report.find(params[:report_id])
-    @comment = Comment.new
+    @comment = @commentable.comments.build
   end
 
   # GET /comments/1/edit
@@ -23,14 +22,11 @@ class CommentsController < ApplicationController
   # POST /comments or /comments.json
   def create
     @comment = @commentable.comments.build(comment_params)
-    # @comment = Comment.new(comment_params)
-    # @comment.report_id = params[:report_id]
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to report_path(@comment.commentable_id), notice: 'Comment was successfully created.' }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-      end
+    if @comment.save
+      # redirect_to [@commentable, @comment], notice: 'Comment was successfully created.'
+      redirect_to report_path(@comment.commentable_id), notice: 'Comment was successfully created.'
+    else
+      render :new
     end
   end
 
@@ -62,6 +58,6 @@ class CommentsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def comment_params
-    params.require(:comment).permit(:content, :report_id).merge(user_id: current_user.id)
+    params.require(:comment).permit(:content, :commentable_id).merge(user_id: current_user.id)
   end
 end

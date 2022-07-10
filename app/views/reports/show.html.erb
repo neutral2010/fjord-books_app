@@ -15,16 +15,20 @@
     <li><%= link_to comment.content, comment_path(comment) %></li>
   <% end %>
 <% end %>
-<%= form_with(model: [@report, Comment.new]) do |form| %>
 
-  <div class="field">
-    <%= form.label :"Comment" %>
-    <%= form.text_area :content %>
-  </div>
+<%#= render 'form', report: @report %>
+<%=  render 'comments/form', commentable: @report, comment: @comments %>
+<%#= render 'comments/comments', commentable: @book, comment: @comments %>
+<%#= form_with(model: [@report, Comment.new]) do |form| %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+<!--  <div class="field">-->
+    <%#= form.label :"Comment" %>
+    <%#= form.text_area :content %>
+<!--  </div>-->
+
+<!--  <div class="actions">-->
+    <%#= form.submit %>
+<!--  </div>-->
+<%# end %>
 <%= link_to 'Edit', edit_report_path(@report) %> |
 <%= link_to 'Back', reports_path %>
