@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Book::CommentsController < CommentsController
+class Books::CommentsController < CommentsController
   before_action :set_commentable, only: %i[create]
 
   private

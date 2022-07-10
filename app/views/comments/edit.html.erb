@@ -1,6 +1,6 @@
 <h1>Editing Comment</h1>
 
 <%#= render 'form', comment: @comment %>
-<%= render partial: "form", locals: { report: @comment.report, comment: @comment} %>
+<%= render partial: "form", locals: { commentable: @comment.commentable, comment: @comment} %>
 
 <%= link_to 'Back', comment_path(@comment) %>
