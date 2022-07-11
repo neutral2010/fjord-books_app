@@ -20,5 +20,19 @@
   <%= image_tag(@book.picture_url) if @book.picture.present? %>
 </p>
 
+<% if @book.comments.present? %>
+  <% @book.comments.each do |comment| %>
+<!--    <li><%#= link_to comment.content, comment_path(comment) %></li>-->
+    <div class="comment">
+    <p><%= comment.content %></p>
+    <p><%= comment.created_at.to_s(:datetime_jp) %></p>
+    <p>-----------------------</p>
+    </div>
+  <% end %>
+<% end %>
+
+<%=  render 'comments/form', commentable: @book, comment: @comments %>
+<%#= form_with(model: [@book, Comment.new]) do |form| %>
+
 <%= link_to t('views.common.edit'), edit_book_path(@book) %> |
 <%= link_to t('views.common.back'), books_path %>

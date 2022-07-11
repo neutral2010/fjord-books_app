@@ -23,8 +23,7 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.build(comment_params)
     if @comment.save
-      # redirect_to [@commentable, @comment], notice: 'Comment was successfully created.'
-      redirect_to report_path(@comment.commentable_id), notice: 'Comment was successfully created.'
+      redirect_to @commentable, notice: 'Comment was successfully created.'
     else
       render :new
     end
