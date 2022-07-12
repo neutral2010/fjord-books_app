@@ -1,7 +1,9 @@
+<h><%= t('views.comment.comment_create') %></h>
+
 <%= form_with(model: [commentable, Comment.new]) do |form| %>
 
   <div class="field">
-    <%= form.label :"Comment" %>
+    <%#= form.label :"コメントする" %>
     <%= form.text_area :content %>
   </div>
 

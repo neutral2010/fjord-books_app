@@ -25,13 +25,9 @@ class ReportsController < ApplicationController
   # POST /reports or /reports.json
   def create
     @report = Report.new(report_params)
-    # このコードがないとバリデーションエラーが出る。インスタンス変数をつけないとダメ。
-    # ストロングパラメーターで対応したので削除
-    # @report.user = current_user
-
     respond_to do |format|
       if @report.save
-        format.html { redirect_to @report, notice: 'Report was successfully created.' }
+        format.html { redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human) }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -42,7 +38,7 @@ class ReportsController < ApplicationController
   def update
     respond_to do |format|
       if @report.update(report_params)
-        format.html { redirect_to @report, notice: 'Report was successfully updated.' }
+        format.html { redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human) }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -53,7 +49,7 @@ class ReportsController < ApplicationController
   def destroy
     @report.destroy
     respond_to do |format|
-      format.html { redirect_to reports_url, notice: 'Report was successfully destroyed.' }
+      format.html { redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human) }
     end
   end
 
@@ -63,11 +59,6 @@ class ReportsController < ApplicationController
   def set_report
     @report = Report.find(params[:id])
   end
-
-  # def set_current_user
-  #   comment = Comment.find(params[:id])
-  #   redirect_to(root_url) unless comment.user_id == current_user.id
-  # end
 
   # Only allow a list of trusted parameters through.
   def report_params

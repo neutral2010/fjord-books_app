@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.build(comment_params)
     if @comment.save
-      redirect_to @commentable, notice: 'Comment was successfully created.'
+      redirect_to @commentable, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     else
       render :new
     end
@@ -33,7 +33,7 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to report_path(@comment.commentable_id), notice: 'Comment was successfully updated.' }
+        format.html { redirect_to report_path(@comment.commentable_id), notice: t('controllers.common.notice_update', name: Comment.model_name.human) }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -44,7 +44,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to report_path(@comment.commentable_id), notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to report_path(@comment.commentable_id), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human) }
     end
   end
 
