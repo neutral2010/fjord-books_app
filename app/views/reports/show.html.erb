@@ -16,7 +16,13 @@
   <% @report.comments.each do |comment| %>
     <div class="comment">
       <p><%= comment.content %></p>
+      <% if comment.user.name.present? %>
+        <p><%= comment.user.name %></p>
+        <% else %>
+        <p><%= comment.user.email %></p>
+      <% end %>
       <p><%= comment.created_at.to_s(:datetime_jp) %></p>
+<!--      <p><%#= comment.updated_at.to_s(:datetime_jp) %></p>-->
       <p>-----------------------</p>
     </div>
   <% end %>
