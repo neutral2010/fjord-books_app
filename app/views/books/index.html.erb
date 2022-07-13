@@ -19,10 +19,8 @@
         <td><%= book.author %></td>
         <td><%= book.picture %></td>
         <td><%= link_to t('views.common.show'), book %></td>
-        <% if report.user_id == current_user.id %>
-          <td><%= link_to t('views.common.edit'), edit_book_path(book) %></td>
-          <td><%= link_to t('views.common.destroy'), book, method: :delete, data: { confirm: t('views.common.delete_confirm') } %></td>
-        <% end %>
+        <td><%= link_to t('views.common.edit'), edit_book_path(book) %></td>
+        <td><%= link_to t('views.common.destroy'), book, method: :delete, data: { confirm: t('views.common.delete_confirm') } %></td>
       </tr>
     <% end %>
   </tbody>
