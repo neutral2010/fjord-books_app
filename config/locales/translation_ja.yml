@@ -22,5 +22,7 @@ ja:
         title: タイトル
         description: 内容
   views:
+    common:
+      no_yet: "%{name}はまだありません"
     comment:
       comment_create: コメントする

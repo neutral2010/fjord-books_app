@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
-  before_action :set_comment, only: %i[show edit update destroy]
+  before_action :set_comment, only: %i[edit update destroy]
 
   # GET /comments or /comments.json
   def index
@@ -42,9 +42,10 @@ class CommentsController < ApplicationController
 
   # DELETE /comments/1 or /comments/1.json
   def destroy
+    @commentable = @comment.commentable
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to report_path(@comment.commentable_id), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human) }
+      format.html { redirect_to @commentable, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human) }
     end
   end
 
