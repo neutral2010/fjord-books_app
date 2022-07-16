@@ -1,6 +1,14 @@
-<h1>Editing Comment</h1>
+<h1><%= t('views.common.title_edit', name: Comment.model_name.human) %></h1>
 
-<%#= render 'form', comment: @comment %>
-<%= render partial: "form", locals: { commentable: @comment.commentable, comment: @comment} %>
+<%= form_with(model: [@commentable, @comment]) do |form| %>
+
+  <div class="field">
+    <%= form.text_area :content %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
 
 <%= link_to 'Back', comment_path(@comment) %>

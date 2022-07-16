@@ -29,11 +29,12 @@ class CommentsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /comments/1 or /comments/1.json
+  # PATCH/PUT /comments/1
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to report_path(@comment.commentable_id), notice: t('controllers.common.notice_update', name: Comment.model_name.human) }
+        @commentable = @comment.commentable
+        format.html { redirect_to @commentable, notice: t('controllers.common.notice_update', name: Comment.model_name.human) }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end

@@ -28,12 +28,10 @@
 
 <% if @book.comments.present? %>
   <% @book.comments.each do |comment| %>
-    <!--    <li><%#= link_to comment.content, comment_path(comment) %></li>-->
     <div class="comment">
       <p><%= comment.content %></p>
       <p><%= comment.created_at.to_s(:datetime_jp) %></p>
-      <!--      <p><%#= comment.updated_at.to_s(:datetime_jp) %></p>-->
-      <%= link_to t('views.common.edit'), edit_book_path(@book) %> |
+      <%= link_to t('views.common.edit'), edit_book_comment_path(@book, comment) %> |
       <%= link_to t('views.common.destroy'), comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %>
       <p>-----------------------</p>
     </div>
