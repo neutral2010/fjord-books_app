@@ -21,6 +21,8 @@ ja:
       report:
         title: タイトル
         description: 内容
+      comment:
+        content: コメント
   views:
     common:
       no_yet: "%{name}はまだありません"

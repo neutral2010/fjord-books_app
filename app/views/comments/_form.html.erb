@@ -1,10 +1,19 @@
-<%= form_with(model: [commentable, Comment.new]) do |form| %>
+<%= form_with(model: [commentable, Comment.new], local: true) do |form| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= t'errors.template.header', model: @comment.model_name.human, count: @comment.errors.count %></h2>
+      <ul>
+        <% @comment.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <div class="field">
     <%= form.text_area :content, required: true %>
   </div>
 
   <div class="actions">
     <%= form.submit t('views.comment.comment_create') %>
-
   </div>
 <% end %>
