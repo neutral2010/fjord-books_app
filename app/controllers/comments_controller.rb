@@ -9,9 +9,7 @@ class CommentsController < ApplicationController
   end
 
   # GET /comments/1 or /comments/1.json
-  def show
-    # @comment = @commentable.comments.build
-  end
+  def show; end
 
   # GET /comments/new
   def new
@@ -24,16 +22,17 @@ class CommentsController < ApplicationController
   # POST /comments or /comments.json
   def create
     @comment = @commentable.comments.build(comment_params)
-    if @comment.save
-      @commentable = @comment.commentable
-      redirect_to @commentable, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
-    elsif @comment[:commentable_type] == 'Report'
-      @report = Report.find(params[:report_id])
-      # redirect_to @commentable, notice: 'コメントが作成されませんでした'
-      render 'reports/show'
-    else
-      @book = Book.find(params[:book_id])
-      render 'books/show'
+    respond_to do |format|
+      if @comment.save
+        @commentable = @comment.commentable
+        format.html { redirect_to @commentable, notice: t('controllers.common.notice_create', name: Comment.model_name.human) }
+      elsif @comment[:commentable_type] == 'Report'
+        @report = Report.find(params[:report_id])
+        format.html { render :'reports/show' }
+      else
+        @book = Book.find(params[:book_id])
+        format.html { render :'books/show' }
+      end
     end
   end
 

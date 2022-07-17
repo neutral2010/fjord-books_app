@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # resources :reports
   resources :comments, only: %i[show edit update destroy]
   resources :reports do
-    resources :comments,  module: :reports
+    resources :comments, module: :reports
   end
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   devise_for :users
@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   # resources :books
   resources :books do
     resources :comments, module: :books
-    # resources :comments, only: [:create], module: :books
   end
 
   resources :users, only: %i[index show] do
