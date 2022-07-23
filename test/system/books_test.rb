@@ -4,7 +4,11 @@ require 'application_system_test_case'
 
 class BooksTest < ApplicationSystemTestCase
   setup do
-    @book = books(:one)
+    @book = books(:cherry_book)
+    visit root_url
+    fill_in 'Eメール', with: 'alice@example.com'
+    fill_in 'パスワード', with: 'password'
+    click_button 'ログイン'
   end
 
   test 'visiting the index' do
@@ -14,14 +18,19 @@ class BooksTest < ApplicationSystemTestCase
 
   test 'creating a Book' do
     visit books_url
-    click_on 'New Book'
+    click_on '新規作成'
 
-    fill_in 'Memo', with: @book.memo
-    fill_in 'Title', with: @book.title
-    click_on 'Create Book'
+    fill_in 'タイトル', with: 'Ruby超入門'
+    fill_in 'メモ', with: 'とても分かりやすい'
+    fill_in '著者', with: 'igaiga'
+    click_button '登録する'
 
-    assert_text 'Book was successfully created'
-    click_on 'Back'
+    assert_text '本が作成されました'
+    assert_text 'Ruby超入門'
+    assert_text 'とても分かりやすい'
+    assert_text 'igaiga'
+
+    # click_on '戻る'
   end
 
   test 'updating a Book' do
@@ -39,9 +48,9 @@ class BooksTest < ApplicationSystemTestCase
   test 'destroying a Book' do
     visit books_url
     page.accept_confirm do
-      click_on 'Destroy', match: :first
+      click_on '削除' #, match: :first
     end
 
-    assert_text 'Book was successfully destroyed'
+    assert_text '本が削除されました。'
   end
 end
