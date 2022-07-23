@@ -4,44 +4,45 @@ require 'application_system_test_case'
 
 class ReportsTest < ApplicationSystemTestCase
   setup do
-    @report = reports(:one)
-  end
-
-  test 'visiting the index' do
-    visit reports_url
-    assert_selector 'h1', text: 'Reports'
+    @report = reports(:report_one)
+    visit root_url
+    fill_in 'Eメール', with: 'alice@example.com'
+    fill_in 'パスワード', with: 'password'
+    click_button 'ログイン'
   end
 
   test 'creating a Report' do
     visit reports_url
-    click_on 'New Report'
+    click_on '新規作成'
 
-    fill_in 'Description', with: @report.description
-    fill_in 'Title', with: @report.title
-    click_on 'Create Report'
+    fill_in 'タイトル', with: '初めての日報です。'
+    fill_in '内容', with: 'これからがんばります'
+    click_on '登録する'
 
-    assert_text 'Report was successfully created'
-    click_on 'Back'
+    assert_text '日報が作成されました'
+    assert_text '初めての日報です。'
+    assert_text 'これからがんばります'
   end
 
   test 'updating a Report' do
     visit reports_url
-    click_on 'Edit', match: :first
+    click_on '編集'
 
-    fill_in 'Description', with: @report.description
-    fill_in 'Title', with: @report.title
-    click_on 'Update Report'
+    fill_in 'タイトル', with: '2日目の日報です'
+    fill_in '内容', with: '更新してみました'
+    click_on '更新する'
 
-    assert_text 'Report was successfully updated'
-    click_on 'Back'
+    assert_text '日報が更新されました'
+    assert_text '2日目の日報です'
+    assert_text '更新してみました'
   end
 
   test 'destroying a Report' do
     visit reports_url
     page.accept_confirm do
-      click_on 'Destroy', match: :first
+      click_on '削除'
     end
 
-    assert_text 'Report was successfully destroyed'
+    assert_text '日報が削除されました'
   end
 end

@@ -11,10 +11,10 @@ class BooksTest < ApplicationSystemTestCase
     click_button 'ログイン'
   end
 
-  test 'visiting the index' do
-    visit books_url
-    assert_selector 'h1', text: 'Books'
-  end
+  # test 'visiting the index' do
+  #   visit books_url
+  #   assert_selector 'h1', text: 'Books'
+  # end
 
   test 'creating a Book' do
     visit books_url
@@ -35,14 +35,19 @@ class BooksTest < ApplicationSystemTestCase
 
   test 'updating a Book' do
     visit books_url
-    click_on 'Edit', match: :first
+    click_on '編集' # match: :first
 
-    fill_in 'Memo', with: @book.memo
-    fill_in 'Title', with: @book.title
-    click_on 'Update Book'
+    fill_in 'タイトル', with: 'Ruby超入門'
+    fill_in 'メモ', with: 'オブジェクトさんかわいい'
+    fill_in '著者', with: '五十嵐さん'
+    click_on '更新する'
 
-    assert_text 'Book was successfully updated'
-    click_on 'Back'
+    assert_text '本が更新されました'
+    assert_text 'Ruby超入門'
+    assert_text 'オブジェクトさんかわいい'
+    assert_text '五十嵐さん'
+
+    # click_on 'Back'
   end
 
   test 'destroying a Book' do
