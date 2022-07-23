@@ -48,7 +48,7 @@ class BooksTest < ApplicationSystemTestCase
   test 'destroying a Book' do
     visit books_url
     page.accept_confirm do
-      click_on '削除' #, match: :first
+      click_on '削除' # match: :first
     end
 
     assert_text '本が削除されました。'

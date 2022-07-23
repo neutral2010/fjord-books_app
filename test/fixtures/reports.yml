@@ -1,11 +1,8 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+report_one:
   user: alice
-  title: MyString
-  content: MyText
-#
-#two:
-#  user: two
-#  title: MyString
-#  content: MyText
+  title: 今日の日報です
+  content: テストの課題を作成しました
+  created_at: Sat, 23 Jul 2022 18:07:16.229832000 JST +09:00
+
