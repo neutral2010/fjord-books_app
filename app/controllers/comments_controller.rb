@@ -22,30 +22,28 @@ class CommentsController < ApplicationController
 
   # POST /comments or /comments.json
   def create
+    # comment.user = current_user
     @comment = @commentable.comments.build(comment_params)
-    respond_to do |format|
-      if @comment.save
-        @commentable = @comment.commentable
-        format.html { redirect_to @commentable, notice: t('controllers.common.notice_create', name: Comment.model_name.human) }
-      elsif @comment[:commentable_type] == 'Report'
-        @report = Report.find(params[:report_id])
-        format.html { render :'reports/show' }
-      else
-        @book = Book.find(params[:book_id])
-        format.html { render :'books/show' }
-      end
+    if @comment.save
+      @commentable = @comment.commentable
+      redirect_to @commentable, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
+    elsif @comment[:commentable_type] == 'Report'
+      @report = Report.find(params[:report_id])
+      render :'reports/show'
+    else
+      @book = Book.find(params[:book_id])
+      render :'books/show'
     end
   end
 
   # PATCH/PUT /comments/1
   def update
-    respond_to do |format|
-      if @comment.update(comment_params)
-        @commentable = @comment.commentable
-        format.html { redirect_to @commentable, notice: t('controllers.common.notice_update', name: Comment.model_name.human) }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-      end
+    comment.user = current_user
+    if @comment.update(comment_params)
+      @commentable = @comment.commentable
+      redirect_to @commentable, notice: t('controllers.common.notice_update', name: Comment.model_name.human)
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -53,9 +51,7 @@ class CommentsController < ApplicationController
   def destroy
     @commentable = @comment.commentable
     @comment.destroy
-    respond_to do |format|
-      format.html { redirect_to @commentable, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human) }
-    end
+    redirect_to @commentable, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
   end
 
   private
