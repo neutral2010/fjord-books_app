@@ -18,16 +18,18 @@
 <% if @report.comments.present? %>
   <% @report.comments.each do |comment| %>
     <div class="comment">
-    <p><%= comment.content %></p>
-    <% if comment.user.name.present? %>
-      <p><%= comment.user.name %></p>
-    <% else %>
-      <p><%= comment.user.email %></p>
-    <% end %>
-    <p><%= comment.created_at.to_s(:datetime_jp) %></p>
-    <%= link_to t('views.common.edit'), edit_comment_path(comment) %> |
-    <%= link_to t('views.common.destroy'), comment_path(comment), method: :delete, data: { confirm: t('views.common.delete_confirm') } %>
-    <p>-----------------------</p>
+      <p><%= comment.content %></p>
+
+      <% if comment.user.name.present? %>
+        <p><%= comment.user.name %></p>
+      <% else %>
+        <p><%= comment.user.email %></p>
+      <% end %>
+      <p><%= l comment.created_at, format: :long %></p>
+
+      <%= link_to t('views.common.edit'), edit_comment_path(comment) %> |
+      <%= link_to t('views.common.destroy'), comment_path(comment), method: :delete, data: { confirm: t('views.common.delete_confirm') } %>
+      <p>-----------------------</p>
     </div>
   <% end %>
 <% else %>
