@@ -22,8 +22,8 @@ class CommentsController < ApplicationController
 
   # POST /comments or /comments.json
   def create
-    # comment.user = current_user
     @comment = @commentable.comments.build(comment_params)
+    @comment.user = current_user
     if @comment.save
       @commentable = @comment.commentable
       redirect_to @commentable, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
@@ -38,8 +38,8 @@ class CommentsController < ApplicationController
 
   # PATCH/PUT /comments/1
   def update
-    comment.user = current_user
-    if @comment.update(comment_params)
+    if @comment.user == current_user
+      @comment.update(comment_params)
       @commentable = @comment.commentable
       redirect_to @commentable, notice: t('controllers.common.notice_update', name: Comment.model_name.human)
     else
@@ -63,6 +63,7 @@ class CommentsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def comment_params
-    params.require(:comment).permit(:content, :commentable_id).merge(user_id: current_user.id)
+    # params.require(:comment).permit(:content, :commentable_id).merge(user_id: current_user.id)
+    params.require(:comment).permit(:content, :commentable_id)
   end
 end
