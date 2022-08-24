@@ -38,13 +38,20 @@ class ReportsTest < ApplicationSystemTestCase
   end
 
   test 'destroying a Report' do
+    # visit reports_url
+    # click_on '新規作成'
+    #
+    # fill_in 'タイトル', with: '今日の日報です。'
+    # fill_in '内容', with: 'これからがんばります'
+    # click_on '登録する'
+
     visit reports_url
     assert_text '今日の日報です'
     page.accept_confirm do
+      # all('tbody tr')[0].click_on '削除'
       click_on '削除'
     end
-
     assert_text '日報が削除されました。'
-    assert_no_text '今日の日報です'
+    assert_no_text '今日の日報です。'
   end
 end
