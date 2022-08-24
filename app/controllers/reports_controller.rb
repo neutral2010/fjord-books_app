@@ -19,7 +19,9 @@ class ReportsController < ApplicationController
   end
 
   # GET /reports/1/edit
-  def edit; end
+  def edit
+    redirect_to reports_path unless @report.user == current_user
+  end
 
   # POST /reports or /reports.json
   def create

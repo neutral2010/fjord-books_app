@@ -11,4 +11,9 @@
   </div>
 <% end %>
 
-<%= link_to t('views.common.back'), comment_path(@comment) %>
+<%# if @comment[:commentable_type] == 'Report'%>
+<%#= link_to t('views.common.back'), report_path(@comment) %>
+<%# else %>
+<%#= link_to t('views.common.back'), book_path(@comment) %>
+<%# end %>
+<a href="javascript:history.back();"><%= t('views.common.back') %></a>

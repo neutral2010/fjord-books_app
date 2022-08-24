@@ -18,28 +18,31 @@ class CommentsController < ApplicationController
   end
 
   # GET /comments/1/edit
-  def edit; end
+  def edit
+    redirect_to reports_path unless @comment.user == current_user
+  end
 
   # POST /comments or /comments.json
   def create
-    @comment = @commentable.comments.build(comment_params)
+    @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
     if @comment.save
-      @commentable = @comment.commentable
       redirect_to @commentable, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
-    elsif @comment[:commentable_type] == 'Report'
-      @report = Report.find(params[:report_id])
-      render :'reports/show'
+      # elsif @comment[:commentable_type] == 'Report'
+      #   @report = Report.find(params[:report_id])
+      #   render :'reports/show'
+      # else
+      #   @book = Book.find(params[:book_id])
+      #   render :'books/show'
     else
-      @book = Book.find(params[:book_id])
-      render :'books/show'
+      render @commentable_type
     end
   end
 
   # PATCH/PUT /comments/1
   def update
-    if @comment.user == current_user
-      @comment.update(comment_params)
+    # if @comment.user == current_user
+    if @comment.update(comment_params)
       @commentable = @comment.commentable
       redirect_to @commentable, notice: t('controllers.common.notice_update', name: Comment.model_name.human)
     else
@@ -63,7 +66,6 @@ class CommentsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def comment_params
-    # params.require(:comment).permit(:content, :commentable_id).merge(user_id: current_user.id)
     params.require(:comment).permit(:content, :commentable_id)
   end
 end
