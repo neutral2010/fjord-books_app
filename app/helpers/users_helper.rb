@@ -9,5 +9,3 @@ module UsersHelper
     l comment.created_at, format: :long
   end
 end
-
-

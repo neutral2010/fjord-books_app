@@ -12,8 +12,9 @@
 <% end %>
 
 <%# if @comment[:commentable_type] == 'Report'%>
-<%#= link_to t('views.common.back'), report_path(@comment) %>
+<%#= link_to t('views.common.back'), report_path(@report) %>
 <%# else %>
-<%#= link_to t('views.common.back'), book_path(@comment) %>
+<%#= link_to t('views.common.back'), book_path(@book) %>
 <%# end %>
 <a href="javascript:history.back();"><%= t('views.common.back') %></a>
+<%#= link_to t('views.common.back'), polymophic_url(@commentable, @comments) %>

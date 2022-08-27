@@ -2,23 +2,24 @@
 
 <p>
   <strong><%= Report.human_attribute_name(:title) %></strong>
-  <%= @report.title %>
+  <%= @commentable.title %>
 </p>
 
 <p>
   <strong><%= Report.human_attribute_name(:description) %></strong>
-  <%= @report.description %>
+  <%= @commentable.description %>
 </p>
 
-<% if @report.user == current_user %>
-  <%= link_to t('views.common.edit'), edit_report_path(@report) %> |
+<% if @commentable.user == current_user %>
+    <%= link_to t('views.common.edit'), edit_report_path(@commentable) %> |
+
 <% end %>
 <%= link_to t('views.common.back'), reports_path %>
 
 <h2><%= Comment.model_name.human %></h2>
 
-<% if @report.comments.present? %>
-  <% @report.comments.each do |comment| %>
+<% if @commentable.comments.present? %>
+  <% @commentable.comments.each do |comment| %>
     <div class="comment">
       <p><%= comment.content %></p>
       <p><%= about_comment_user(comment) %></p>

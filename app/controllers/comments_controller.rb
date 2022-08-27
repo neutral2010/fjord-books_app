@@ -28,20 +28,14 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     if @comment.save
       redirect_to @commentable, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
-      # elsif @comment[:commentable_type] == 'Report'
-      #   @report = Report.find(params[:report_id])
-      #   render :'reports/show'
-      # else
-      #   @book = Book.find(params[:book_id])
-      #   render :'books/show'
     else
+      set_report_or_book
       render @commentable_type
     end
   end
 
   # PATCH/PUT /comments/1
   def update
-    # if @comment.user == current_user
     if @comment.update(comment_params)
       @commentable = @comment.commentable
       redirect_to @commentable, notice: t('controllers.common.notice_update', name: Comment.model_name.human)
@@ -52,8 +46,8 @@ class CommentsController < ApplicationController
 
   # DELETE /comments/1 or /comments/1.json
   def destroy
-    @commentable = @comment.commentable
     @comment.destroy
+    @commentable = @comment.commentable
     redirect_to @commentable, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
   end
 
