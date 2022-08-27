@@ -30,13 +30,8 @@
   <% @book.comments.each do |comment| %>
     <div class="comment">
       <p><%= comment.content %></p>
-
-      <% if comment.user.name.present? %>
-        <p><%= comment.user.name %></p>
-      <% else %>
-        <p><%= comment.user.email %></p>
-      <% end %>
-      <p><%= l comment.created_at, format: :long %></p>
+      <p><%= about_comment_user(comment) %></p>
+      <p><%= commented_time(comment) %></p>
 
       <%= link_to t('views.common.edit'), edit_comment_path(@book, comment) %> |
       <%= link_to t('views.common.destroy'), comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %>
