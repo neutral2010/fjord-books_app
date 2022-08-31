@@ -10,7 +10,6 @@ class BooksController < ApplicationController
 
   # GET /books/1
   def show
-    @commentable = Book.find(params[:id])
     @comment = Comment.new
   end
 

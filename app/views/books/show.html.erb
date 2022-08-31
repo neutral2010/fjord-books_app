@@ -2,32 +2,32 @@
 
 <p>
   <strong><%= Book.human_attribute_name(:title) %>:</strong>
-  <%= @commentable.title %>
+  <%= @book.title %>
 </p>
 
 <p>
   <strong><%= Book.human_attribute_name(:memo) %>:</strong>
-  <%= @commentable.memo %>
+  <%= @book.memo %>
 </p>
 
 <p>
   <strong><%= Book.human_attribute_name(:author) %>:</strong>
-  <%= @commentable.author %>
+  <%= @book.author %>
 </p>
 
 <p>
   <strong><%= Book.human_attribute_name(:picture) %>:</strong>
-  <%= image_tag(@commentable.picture_url) if @commentable.picture.present? %>
+  <%= image_tag(@book.picture_url) if @book.picture.present? %>
 </p>
 
-<%= link_to t('views.common.edit'), edit_book_path(@commentable) %> |
+<%= link_to t('views.common.edit'), edit_book_path(@book) %> |
 <%= link_to t('views.common.back'), books_path %>
 
 
 <h2><%= Comment.model_name.human %></h2>
 
-<% if @commentable.comments.present? %>
-  <% @commentable.comments.each do |comment| %>
+<% if @book.comments.present? %>
+  <% @book.comments.each do |comment| %>
     <div class="comment">
       <p><%= comment.content %></p>
       <p><%= about_comment_user(comment) %></p>

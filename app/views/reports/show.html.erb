@@ -2,31 +2,31 @@
 
 <p>
   <strong><%= Report.human_attribute_name(:title) %></strong>
-  <%= @commentable.title %>
+  <%= @report.title %>
 </p>
 
 <p>
   <strong><%= Report.human_attribute_name(:description) %></strong>
-  <%= @commentable.description %>
+  <%= @report.description %>
 </p>
 
-<% if @commentable.user == current_user %>
-    <%= link_to t('views.common.edit'), edit_report_path(@commentable) %> |
+<% if @report.user == current_user %>
+    <%= link_to t('views.common.edit'), edit_report_path(@report) %> |
 
 <% end %>
 <%= link_to t('views.common.back'), reports_path %>
 
 <h2><%= Comment.model_name.human %></h2>
 
-<% if @commentable.comments.present? %>
-  <% @commentable.comments.each do |comment| %>
+<% if @report.comments.present? %>
+  <% @report.comments.each do |comment| %>
     <div class="comment">
       <p><%= comment.content %></p>
       <p><%= about_comment_user(comment) %></p>
       <p><%= commented_time(comment) %></p>
 
       <% if comment.user_id == current_user.id %>
-        <%= link_to t('views.common.edit'), edit_comment_path(comment) %> |
+        <%= link_to t('views.common.edit'), edit_comment_path(comment)%> |
         <%= link_to t('views.common.destroy'), comment_path(comment), method: :delete, data: { confirm: t('views.common.delete_confirm') } %>
       <% end %>
       <p>-----------------------</p>

@@ -29,7 +29,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to @commentable, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     else
-      set_report_or_book
+      set_commentable
       render @commentable_type
     end
   end
@@ -47,8 +47,7 @@ class CommentsController < ApplicationController
   # DELETE /comments/1 or /comments/1.json
   def destroy
     @comment.destroy
-    @commentable = @comment.commentable
-    redirect_to @commentable, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
+    redirect_to @comment.commentable, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
   end
 
   private
