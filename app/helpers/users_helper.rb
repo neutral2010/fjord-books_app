@@ -6,6 +6,6 @@ module UsersHelper
   end
 
   def commented_time(comment)
-    l comment.created_at, format: :long
+    l comment.created_at, format: :long, default: '-'
   end
 end
