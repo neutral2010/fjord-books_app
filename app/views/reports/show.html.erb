@@ -26,8 +26,6 @@
       <p><%= commented_time(comment) %></p>
 
       <% if comment.user_id == current_user.id %>
-        <% next if comment.new_record? %>
-
         <%= link_to t('views.common.edit'), edit_comment_path(comment) %> |
         <%= link_to t('views.common.destroy'), comment_path(comment), method: :delete, data: { confirm: t('views.common.delete_confirm') } %>
       <% end %>
