@@ -1,0 +1,18 @@
+<h1><%= t('views.common.title_edit', name: Comment.model_name.human) %></h1>
+
+<%= form_with(model: [@commentable, @comment]) do |form| %>
+
+  <div class="field">
+    <%= form.text_area :content %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<% if @comment.commentable_type == 'Report' %>
+  <%= link_to t('views.common.back'), report_path(@comment.commentable_id) %>
+<% elsif @comment.commentable_type == 'Book' %>
+  <%= link_to t('views.common.back'), book_path(@comment.commentable_id) %>
+<% end %>

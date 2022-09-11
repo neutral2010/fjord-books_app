@@ -22,3 +22,24 @@
 
 <%= link_to t('views.common.edit'), edit_book_path(@book) %> |
 <%= link_to t('views.common.back'), books_path %>
+
+
+<h2><%= Comment.model_name.human %></h2>
+
+<% if @book.comments.present? %>
+  <% @book.comments.each do |comment| %>
+    <div class="comment">
+      <p><%= comment.content %></p>
+      <p><%= about_comment_user(comment) %></p>
+      <p><%= commented_time(comment) %></p>
+
+      <%= link_to t('views.common.edit'), edit_comment_path(comment) %> |
+      <%= link_to t('views.common.destroy'), comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <p>-----------------------</p>
+    </div>
+  <% end %>
+<% else %>
+  <p><%= t('views.common.no_yet', name: Comment.model_name.human) %></p>
+<% end %>
+
+<%= render 'comments/form', commentable: @book, comment: @comments %>
